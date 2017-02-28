@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LambdicSql;
 using LambdicSql.feat.Dapper;
-using static LambdicSql.Symbol;
+using static LambdicSql.Npgsql.Symbol;
 using static Test.Helper.DBProviderInfo;
 using Test.Helper;
 
@@ -182,26 +182,7 @@ FROM tbl_remuneration");
 	CURRENT_DATE AS Val
 FROM DUAL");
         }
-
-        [TestMethod]
-        public void Test_CurrentDate_3()
-        {
-            if (!_connection.IsTarget(TargetDB.DB2)) return;
-
-            var sql = Db<DB>.Sql(db =>
-                Select(new
-                {
-                    Val = Current_Date()
-                }).From(SysIBM.SysDummy1));
-
-            var datas = _connection.Query(sql).ToList();
-            Assert.IsTrue(0 < datas.Count);
-            AssertEx.AreEqual(sql, _connection,
-@"SELECT
-	CURRENT DATE AS Val
-FROM SYSIBM.SYSDUMMY1");
-        }
-
+        
         [TestMethod]
         public void Test_CurrentTime_1()
         {
@@ -218,26 +199,6 @@ FROM SYSIBM.SYSDUMMY1");
             AssertEx.AreEqual(sql, _connection,
 @"SELECT
 	CURRENT_TIME AS Val");
-        }
-
-        [TestMethod]
-        public void Test_CurrentTime_2()
-        {
-            if (!_connection.IsTarget(TargetDB.DB2)) return;
-
-            var sql = Db<DB>.Sql(db =>
-                Select(new
-                {
-                    Val = Current_Time()
-                }).
-                From(SysIBM.SysDummy1));
-
-            var datas = _connection.Query(sql).ToList();
-            Assert.IsTrue(0 < datas.Count);
-            AssertEx.AreEqual(sql, _connection,
-@"SELECT
-	CURRENT TIME AS Val
-FROM SYSIBM.SYSDUMMY1");
         }
 
         [TestMethod]
@@ -276,26 +237,6 @@ FROM SYSIBM.SYSDUMMY1");
 @"SELECT
 	CURRENT_TIMESTAMP AS Val
 FROM DUAL");
-        }
-
-        [TestMethod]
-        public void Test_CurrentTimeStamp_3()
-        {
-            if (!_connection.IsTarget(TargetDB.DB2)) return;
-
-            var sql = Db<DB>.Sql(db =>
-                Select(new
-                {
-                    Val = Current_TimeStamp()
-                }).
-                From(SysIBM.SysDummy1));
-
-            var datas = _connection.Query(sql).ToList();
-            Assert.IsTrue(0 < datas.Count);
-            AssertEx.AreEqual(sql, _connection,
-@"SELECT
-	CURRENT TIMESTAMP AS Val
-FROM SYSIBM.SYSDUMMY1");
         }
 
         [TestMethod]
