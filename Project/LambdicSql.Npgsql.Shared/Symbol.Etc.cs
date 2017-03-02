@@ -1,6 +1,5 @@
 ﻿using LambdicSql.ConverterServices;
 using LambdicSql.ConverterServices.SymbolConverters;
-using LambdicSql.Specialized.SymbolConverters;
 using System;
 
 namespace LambdicSql.Npgsql
@@ -70,21 +69,21 @@ namespace LambdicSql.Npgsql
         /// CURREN_TDATE Keyword.
         /// </summary>
         /// <returns>Date of executing SQL.</returns>
-        [CurrentDateTimeConverter(Name = "DATE")]
+        [ClauseStyleConverter(Name = "CURRENT_DATE")]
         public static DateTime Current_Date() { throw new InvalitContextException(nameof(Current_Date)); }
 
         /// <summary>
         /// CURRENT_TIME Keyword.
         /// </summary>
         /// <returns>Date of executing SQL.</returns>
-        [CurrentDateTimeConverter(Name = "TIME")]
+        [ClauseStyleConverter(Name = "CURRENT_TIME")]
         public static TimeSpan Current_Time() { throw new InvalitContextException(nameof(DateTimeOffset)); }
 
         /// <summary>
         /// CURRENT_TIMESTAMP Keyword.
         /// </summary>
         /// <returns>Date and time of executing SQL.</returns>
-        [CurrentDateTimeConverter(Name = "TIMESTAMP")]
+        [ClauseStyleConverter(Name = "CURRENT_TIMESTAMP")]
         public static DateTime Current_TimeStamp() { throw new InvalitContextException(nameof(Current_TimeStamp)); }
     }
 }

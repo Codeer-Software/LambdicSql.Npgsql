@@ -800,7 +800,7 @@ namespace LambdicSql.Npgsql
         /// </summary>
         /// <param name="subQuerys">sub querys.</param>
         /// <returns></returns>
-        [WithConverter]
+        [WithConverter(ExistRecursiveClause = true)]
         public static Clause<Non> With(params Sql[] subQuerys) { throw new InvalitContextException(nameof(With)); }
 
         /// <summary>
@@ -810,7 +810,7 @@ namespace LambdicSql.Npgsql
         /// <param name="args">Argument of recursive part.</param>
         /// <param name="subQuery">sub query.</param>
         /// <returns>Clause.</returns>
-        [WithConverter]
+        [WithConverter(ExistRecursiveClause = true)]
         public static Clause<T> With<T>(SqlRecursiveArguments<T> args, Sql subQuery) { throw new InvalitContextException(nameof(With)); }
 
         /// <summary>
