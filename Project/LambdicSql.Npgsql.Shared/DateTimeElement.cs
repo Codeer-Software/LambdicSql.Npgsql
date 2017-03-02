@@ -24,11 +24,6 @@ namespace LambdicSql.Npgsql
         Month,
 
         /// <summary>
-        /// Dayofyear.
-        /// </summary>
-        Dayofyear,
-
-        /// <summary>
         /// Day.
         /// </summary>
         Day,
@@ -37,11 +32,6 @@ namespace LambdicSql.Npgsql
         /// Week.
         /// </summary>
         Week,
-
-        /// <summary>
-        /// Weekday.
-        /// </summary>
-        Weekday,
 
         /// <summary>
         /// Hour.
@@ -66,16 +56,6 @@ namespace LambdicSql.Npgsql
         /// <summary>
         /// Microsecond.
         /// </summary>
-        Microsecond,
-
-        /// <summary>
-        /// Nanosecond.
-        /// </summary>
-        Nanosecond,
-
-        /// <summary>
-        /// ISO_WEEK.
-        /// </summary>
-        ISO_WEEK,
+        Microsecond
     }
 }

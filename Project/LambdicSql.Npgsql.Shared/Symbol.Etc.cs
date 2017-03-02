@@ -8,7 +8,7 @@ namespace LambdicSql.Npgsql
     /// <summary>
     /// SQL Symbols.
     /// It can only be used within methods of the LambdicSql.Db class.
-    /// Use[using static LambdicSql.Keywords;], you can use to write natural SQL.
+    /// Use[using static LambdicSql.Npgsql.Symbol;], you can use to write natural SQL.
     /// </summary>
     public static partial class Symbol
     {
@@ -86,17 +86,5 @@ namespace LambdicSql.Npgsql
         /// <returns>Date and time of executing SQL.</returns>
         [CurrentDateTimeConverter(Name = "TIMESTAMP")]
         public static DateTime Current_TimeStamp() { throw new InvalitContextException(nameof(Current_TimeStamp)); }
-
-        /// <summary>
-        /// DUAL keyword.
-        /// </summary>
-        [MemberConverter]
-        public static object Dual { get { throw new InvalitContextException(nameof(Dual)); } }
-
-        /// <summary>
-        /// ROWNUM BETWEEN keyword.
-        /// </summary>
-        [ClauseStyleConverter]
-        public static object RowNum() { throw new InvalitContextException(nameof(RowNum)); }
     }
 }
