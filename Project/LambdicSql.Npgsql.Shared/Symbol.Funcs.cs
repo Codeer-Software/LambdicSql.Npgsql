@@ -138,14 +138,6 @@ namespace LambdicSql.Npgsql
         public static int Length(object target) { throw new InvalitContextException(nameof(Length)); }
 
         /// <summary>
-        /// LEN function.
-        /// </summary>
-        /// <param name="target">target.</param>
-        /// <returns>String length.</returns>
-        [FuncStyleConverter]
-        public static int Len(object target) { throw new InvalitContextException(nameof(Len)); }
-
-        /// <summary>
         /// LOWER function.
         /// </summary>
         /// <param name="target">target.</param>
@@ -191,15 +183,6 @@ namespace LambdicSql.Npgsql
         public static double Extract(DateTimeElement element, DateTime src) { throw new InvalitContextException(nameof(Extract)); }
 
         /// <summary>
-        /// DATEPART function.
-        /// </summary>
-        /// <param name="element">Part type.</param>
-        /// <param name="src">The date data.</param>
-        /// <returns>A part from the date data.</returns>
-        [FuncStyleConverter]
-        public static int DatePart(DateTimeElement element, DateTime src) { throw new InvalitContextException(nameof(Extract)); }
-
-        /// <summary>
         /// CAST function.
         /// </summary>
         /// <typeparam name="TDst">Type of destination.</typeparam>
@@ -217,17 +200,7 @@ namespace LambdicSql.Npgsql
         /// <returns>The first non-null value in the parameter.</returns>
         [MethodFormatConverter(Format = "COALESCE(|[<, >0])")]
         public static T Coalesce<T>(params T[] parameter) { throw new InvalitContextException(nameof(Coalesce)); }
-
-        /// <summary>
-        /// NVL function.
-        /// </summary>
-        /// <typeparam name="T">Type represented by expression.</typeparam>
-        /// <param name="expression1">expression.</param>
-        /// <param name="expression2">expression.</param>
-        /// <returns>expression1 or expression2.</returns>
-        [FuncStyleConverter]
-        public static T NVL<T>(T expression1, T expression2) { throw new InvalitContextException(nameof(NVL)); }
-
+        
         /// <summary>
         /// FIRST_VALUE function.
         /// </summary>
@@ -273,14 +246,6 @@ namespace LambdicSql.Npgsql
         /// <returns>Cumulative distribution of values in group.</returns>
         [FuncStyleConverter]
         public static double Cume_Dist() { throw new InvalitContextException(nameof(Cume_Dist)); }
-
-        /// <summary>
-        /// NTILE function.
-        /// </summary>
-        /// <param name="groupCount">The number of ranking groups.</param>
-        /// <returns>For each row, NTILE returns the number of the group to which the row belongs.</returns>
-        [FuncStyleConverter]
-        public static int Ntile(object groupCount) { throw new InvalitContextException(nameof(Ntile)); }
 
         /// <summary>
         /// NTH_VALUE function.

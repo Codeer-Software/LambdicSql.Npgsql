@@ -28,8 +28,6 @@ namespace Test
         [TestMethod]
         public void Test_CreateTable_Postgre()
         {
-            if (!_connection.IsTarget(TargetDB.Postgre)) return;
-
             CleanUpCreateDropTestTable();
 
             var sql = Db<DBForCreateTest>.Sql(db =>

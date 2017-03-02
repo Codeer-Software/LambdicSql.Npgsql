@@ -53,14 +53,6 @@ namespace LambdicSql.Npgsql
         public static OrderByElement Desc(object target) { throw new InvalitContextException(nameof(Desc)); }
 
         /// <summary>
-        /// TOP Keyword.
-        /// </summary>
-        /// <param name="count">Count.</param>
-        /// <returns>TOP.</returns>
-        [MethodFormatConverter(Format = "TOP [$0]")]
-        public static TopElement Top(long count) { throw new InvalitContextException(nameof(Top)); }
-
-        /// <summary>
         /// ALL Keyword
         /// </summary>
         /// <returns>ALL.</returns>

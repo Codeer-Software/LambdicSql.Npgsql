@@ -4,12 +4,6 @@ using LambdicSql.Specialized.SymbolConverters;
 
 namespace LambdicSql.Npgsql
 {
-    //TODO delete
-    /// <summary>
-    /// TOP keyword.
-    /// </summary>
-    public abstract class TopElement { }
-
     /// <summary>
     /// SQL Symbol.
     /// It can only be used within lambda of the LambdicSql.
@@ -36,28 +30,6 @@ namespace LambdicSql.Npgsql
         /// <returns>Clause.</returns>
         [SelectConverter]
         public static Clause<T> Select<TSrc, T>(this Clause<TSrc> before, T selected) { throw new InvalitContextException(nameof(Select)); }
-
-        /// <summary>
-        /// SELECT clause.
-        /// </summary>
-        /// <typeparam name="T">Type of selected.</typeparam>
-        /// <param name="top">TOP keyword.</param>
-        /// <param name="selected">Specify a new expression to represent the selection.</param>
-        /// <returns>Clause.</returns>
-        [SelectConverter]
-        public static Clause<T> Select<T>(TopElement top, T selected) { throw new InvalitContextException(nameof(Select)); }
-
-        /// <summary>
-        /// SELECT clause.
-        /// </summary>
-        /// <typeparam name="TSrc">If there is a Select clause before, it is the type selected there. Normally, the Select clause does not exist before the Select clause, and object is specified.</typeparam>
-        /// <typeparam name="T">Type of selected.</typeparam>
-        /// <param name="before">It is the previous clause.</param>
-        /// <param name="top">TOP keyword.</param>
-        /// <param name="selected">Specify a new expression to represent the selection.</param>
-        /// <returns>Clause.</returns>
-        [SelectConverter]
-        public static Clause<T> Select<TSrc, T>(this Clause<TSrc> before, TopElement top, T selected) { throw new InvalitContextException(nameof(Select)); }
 
         /// <summary>
         /// SELECT clause.
@@ -100,48 +72,6 @@ namespace LambdicSql.Npgsql
         /// <summary>
         /// SELECT clause.
         /// </summary>
-        /// <param name="top">TOP keyword.</param>
-        /// <param name="asterisk">*</param>
-        /// <returns>Clause.</returns>
-        [SelectConverter]
-        public static Clause<Non> Select(TopElement top, AsteriskElement asterisk) { throw new InvalitContextException(nameof(Select)); }
-
-        /// <summary>
-        /// SELECT clause.
-        /// </summary>
-        /// <typeparam name="TSrc">If there is a Select clause before, it is the type selected there. Normally, the Select clause does not exist before the Select clause, and object is specified.</typeparam>
-        /// <param name="before">It is the previous clause.</param>
-        /// <param name="top">TOP keyword.</param>
-        /// <param name="asterisk">*</param>
-        /// <returns>Clause.</returns>
-        [SelectConverter]
-        public static Clause<Non> Select<TSrc>(this Clause<TSrc> before, TopElement top, AsteriskElement asterisk) { throw new InvalitContextException(nameof(Select)); }
-
-        /// <summary>
-        /// SELECT clause.
-        /// </summary>
-        /// <typeparam name="T">Type of selected.</typeparam>
-        /// <param name="top">TOP keyword.</param>
-        /// <param name="asterisk">*</param>
-        /// <returns>Clause.</returns>
-        [SelectConverter]
-        public static Clause<T> Select<T>(TopElement top, AsteriskElement<T> asterisk) { throw new InvalitContextException(nameof(Select)); }
-
-        /// <summary>
-        /// SELECT clause.
-        /// </summary>
-        /// <typeparam name="TSrc">If there is a Select clause before, it is the type selected there. Normally, the Select clause does not exist before the Select clause, and object is specified.</typeparam>
-        /// <typeparam name="T">Type of selected.</typeparam>
-        /// <param name="before">It is the previous clause.</param>
-        /// <param name="top">TOP keyword.</param>
-        /// <param name="asterisk">*</param>
-        /// <returns>Clause.</returns>
-        [SelectConverter]
-        public static Clause<T> Select<TSrc, T>(this Clause<TSrc> before, TopElement top, AsteriskElement<T> asterisk) { throw new InvalitContextException(nameof(Select)); }
-
-        /// <summary>
-        /// SELECT clause.
-        /// </summary>
         /// <typeparam name="T">Type of selected.</typeparam>
         /// <param name="predicate">ALL or DISTINCT.</param>
         /// <param name="selected">Specify a new expression to represent the selection.</param>
@@ -160,30 +90,6 @@ namespace LambdicSql.Npgsql
         /// <returns>Clause.</returns>
         [SelectConverter]
         public static Clause<T> Select<TSrc, T>(this Clause<TSrc> before, AggregatePredicateElement predicate, T selected) { throw new InvalitContextException(nameof(Select)); }
-
-        /// <summary>
-        /// SELECT clause.
-        /// </summary>
-        /// <typeparam name="T">Type of selected.</typeparam>
-        /// <param name="predicate">ALL or DISTINCT.</param>
-        /// <param name="top">TOP keyword.</param>
-        /// <param name="selected">Specify a new expression to represent the selection.</param>
-        /// <returns>Clause.</returns>
-        [SelectConverter]
-        public static Clause<T> Select<T>(AggregatePredicateElement predicate, TopElement top, T selected) { throw new InvalitContextException(nameof(Select)); }
-
-        /// <summary>
-        /// SELECT clause.
-        /// </summary>
-        /// <typeparam name="TSrc">If there is a Select clause before, it is the type selected there. Normally, the Select clause does not exist before the Select clause, and object is specified.</typeparam>
-        /// <typeparam name="T">Type of selected.</typeparam>
-        /// <param name="before">It is the previous clause.</param>
-        /// <param name="predicate">ALL or DISTINCT.</param>
-        /// <param name="top">TOP keyword.</param>
-        /// <param name="selected">Specify a new expression to represent the selection.</param>
-        /// <returns>Clause.</returns>
-        [SelectConverter]
-        public static Clause<T> Select<TSrc, T>(this Clause<TSrc> before, AggregatePredicateElement predicate, TopElement top, T selected) { throw new InvalitContextException(nameof(Select)); }
 
         /// <summary>
         /// SELECT clause.
@@ -226,52 +132,6 @@ namespace LambdicSql.Npgsql
         /// <returns>Clause.</returns>
         [SelectConverter]
         public static Clause<T> Select<TSrc, T>(this Clause<TSrc> before, AggregatePredicateElement predicate, AsteriskElement<T> asterisk) { throw new InvalitContextException(nameof(Select)); }
-
-        /// <summary>
-        /// SELECT clause.
-        /// </summary>
-        /// <param name="predicate">ALL or DISTINCT.</param>
-        /// <param name="top">TOP keyword.</param>
-        /// <param name="asterisk">*</param>
-        /// <returns>Clause.</returns>
-        [SelectConverter]
-        public static Clause<Non> Select(AggregatePredicateElement predicate, TopElement top, AsteriskElement asterisk) { throw new InvalitContextException(nameof(Select)); }
-
-        /// <summary>
-        /// SELECT clause.
-        /// </summary>
-        /// <typeparam name="TSrc">If there is a Select clause before, it is the type selected there. Normally, the Select clause does not exist before the Select clause, and object is specified.</typeparam>
-        /// <param name="before">It is the previous clause.</param>
-        /// <param name="predicate">ALL or DISTINCT.</param>
-        /// <param name="top">TOP keyword.</param>
-        /// <param name="asterisk">*</param>
-        /// <returns>Clause.</returns>
-        [SelectConverter]
-        public static Clause<Non> Select<TSrc>(this Clause<TSrc> before, AggregatePredicateElement predicate, TopElement top, AsteriskElement asterisk) { throw new InvalitContextException(nameof(Select)); }
-
-        /// <summary>
-        /// SELECT clause.
-        /// </summary>
-        /// <typeparam name="T">Type of selected.</typeparam>
-        /// <param name="predicate">ALL or DISTINCT.</param>
-        /// <param name="top">TOP keyword.</param>
-        /// <param name="asterisk">*</param>
-        /// <returns>Clause.</returns>
-        [SelectConverter]
-        public static Clause<T> Select<T>(AggregatePredicateElement predicate, TopElement top, AsteriskElement<T> asterisk) { throw new InvalitContextException(nameof(Select)); }
-
-        /// <summary>
-        /// SELECT clause.
-        /// </summary>
-        /// <typeparam name="TSrc">If there is a Select clause before, it is the type selected there. Normally, the Select clause does not exist before the Select clause, and object is specified.</typeparam>
-        /// <typeparam name="T">Type of selected.</typeparam>
-        /// <param name="before">It is the previous clause.</param>
-        /// <param name="predicate">ALL or DISTINCT.</param>
-        /// <param name="top">TOP keyword.</param>
-        /// <param name="asterisk">*</param>
-        /// <returns>Clause.</returns>
-        [SelectConverter]
-        public static Clause<T> Select<TSrc, T>(this Clause<TSrc> before, AggregatePredicateElement predicate, TopElement top, AsteriskElement<T> asterisk) { throw new InvalitContextException(nameof(Select)); }
 
         /// <summary>
         /// CASE clause.
@@ -567,25 +427,6 @@ namespace LambdicSql.Npgsql
         public static Clause<T> GroupByRollup<T>(this Clause<T> before, params object[] columns) { throw new InvalitContextException(nameof(GroupByRollup)); }
 
         /// <summary>
-        /// GROUP BY columns WITH ROLLUP clause.
-        /// </summary>
-        /// <param name="columns">Specify the target column of GROUP BY.</param>
-        /// <returns>Clause.</returns>
-        /// 
-        [MethodFormatConverter(Format = "GROUP BY |[<, >0] WITH ROLLUP")]
-        public static Clause<Non> GroupByWithRollup(params object[] columns) { throw new InvalitContextException(nameof(GroupByRollup)); }
-
-        /// <summary>
-        /// GROUP BY columns WITH ROLLUP clause.
-        /// </summary>
-        /// <typeparam name="T">The type represented by before clause.</typeparam>
-        /// <param name="before">It is the previous clause.</param>
-        /// <param name="columns">Specify the target column of GROUP BY.</param>
-        /// <returns>Clause.</returns>
-        [MethodFormatConverter(Format = "GROUP BY |[<, >1] WITH ROLLUP")]
-        public static Clause<T> GroupByWithRollup<T>(this Clause<T> before, params object[] columns) { throw new InvalitContextException(nameof(GroupByRollup)); }
-
-        /// <summary>
         /// GROUP BY CUBE clause.
         /// </summary>
         /// <param name="columns">Specify the target column of GROUP BY.</param>
@@ -714,42 +555,6 @@ namespace LambdicSql.Npgsql
         public static Clause<T> Offset<T>(this Clause<T> before, object offset) { throw new InvalitContextException(nameof(Offset)); }
 
         /// <summary>
-        /// OFFSET count ROWS clause.
-        /// </summary>
-        /// <param name="count">Number of rows to acquire.</param>
-        /// <returns>Clause.</returns>
-        [MethodFormatConverter(Format = "OFFSET |[0] ROWS")]
-        public static Clause<Non> OffsetRows(object count) { throw new InvalitContextException(nameof(OffsetRows)); }
-
-        /// <summary>
-        /// OFFSET count ROWS clause.
-        /// </summary>
-        /// <typeparam name="T">The type represented by before clause.</typeparam>
-        /// <param name="before">It is the previous clause.</param>
-        /// <param name="count">Number of rows to acquire.</param>
-        /// <returns>Clause.</returns>
-        [MethodFormatConverter(Format = "OFFSET |[1] ROWS")]
-        public static Clause<T> OffsetRows<T>(this Clause<T> before, object count) { throw new InvalitContextException(nameof(OffsetRows)); }
-
-        /// <summary>
-        /// FETCH NEXT count ROWS ONLY clause.
-        /// </summary>
-        /// <param name="count">Number of rows to acquire.</param>
-        /// <returns>Clause.</returns>
-        [MethodFormatConverter(Format = "FETCH NEXT |[0] ROWS ONLY")]
-        public static Clause<Non> FetchNextRowsOnly(object count) { throw new InvalitContextException(nameof(FetchNextRowsOnly)); }
-
-        /// <summary>
-        /// FETCH NEXT count ROWS ONLY clause.
-        /// </summary>
-        /// <typeparam name="T">The type represented by before clause.</typeparam>
-        /// <param name="before">It is the previous clause.</param>
-        /// <param name="count">Number of rows to acquire.</param>
-        /// <returns>Clause.</returns>
-        [MethodFormatConverter(Format = "FETCH NEXT |[1] ROWS ONLY")]
-        public static Clause<T> FetchNextRowsOnly<T>(this Clause<T> before, object count) { throw new InvalitContextException(nameof(FetchNextRowsOnly)); }
-
-        /// <summary>
         /// UNION clause.
         /// </summary>
         /// <returns>Clause.</returns>
@@ -799,6 +604,7 @@ namespace LambdicSql.Npgsql
         [ClauseStyleConverter]
         public static Clause<T> Intersect<T>(this Clause<T> before) { throw new InvalitContextException(nameof(Intersect)); }
 
+        //TODO test.
         /// <summary>
         /// INTERSECT clause.
         /// </summary>
@@ -850,22 +656,6 @@ namespace LambdicSql.Npgsql
         /// <returns>Clause.</returns>
         [ClauseStyleConverter]
         public static Clause<T> Except<T>(this Clause<T> before, AggregatePredicateAllElement all) { throw new InvalitContextException(nameof(Except)); }
-
-        /// <summary>
-        /// MINUS clause.
-        /// </summary>
-        /// <returns>Clause.</returns>
-        [ClauseStyleConverter]
-        public static Clause<Non> Minus() { throw new InvalitContextException(nameof(Minus)); }
-
-        /// <summary>
-        /// MINUS clause.
-        /// </summary>
-        /// <typeparam name="T">The type represented by before clause.</typeparam>
-        /// <param name="before">It is the previous clause.</param>
-        /// <returns>Clause.</returns>
-        [ClauseStyleConverter]
-        public static Clause<T> Minus<T>(this Clause<T> before) { throw new InvalitContextException(nameof(Minus)); }
 
         /// <summary>
         /// UPDATE clause.
@@ -1003,7 +793,7 @@ namespace LambdicSql.Npgsql
         /// <param name="target">target.</param>
         /// <returns>IS NOT NULL</returns>
         [MethodFormatConverter(Format = "[0] IS NOT NULL|")]
-        public static bool IsNotNull(object target) { throw new InvalitContextException(nameof(IsNull)); }
+        public static bool IsNotNull(object target) { throw new InvalitContextException(nameof(IsNotNull)); }
 
         /// <summary>
         /// WITH clause.
@@ -1030,7 +820,7 @@ namespace LambdicSql.Npgsql
         /// <param name="args">Argument of recursive part.</param>
         /// <returns>Class representing argument of recursive part.</returns>
         [RecursiveConverter]
-        public static RecursiveArguments<T> Recursive<T>(T args) { throw new InvalitContextException(nameof(Select)); }
+        public static RecursiveArguments<T> Recursive<T>(T args) { throw new InvalitContextException(nameof(Recursive)); }
 
         /// <summary>
         /// CREATE TABLE clause.
@@ -1044,7 +834,7 @@ namespace LambdicSql.Npgsql
         /// </summary>
         /// <returns>Clause.</returns>
         [MethodFormatConverter(Format = "CREATE TABLE IF NOT EXISTS [0](|[#$<,>1])", FormatDirection = FormatDirection.Vertical)]
-        public static Clause<Non> CreateTableIfNotExists(object table, params TableDefinitionElement[] designer) { throw new InvalitContextException(nameof(CreateTable)); }
+        public static Clause<Non> CreateTableIfNotExists(object table, params TableDefinitionElement[] designer) { throw new InvalitContextException(nameof(CreateTableIfNotExists)); }
 
         /// <summary>
         /// CONSTRAINT clause.
@@ -1149,7 +939,7 @@ namespace LambdicSql.Npgsql
         /// <param name="value">value</param>
         /// <returns>Clause.</returns>
         [ClauseStyleConverter]
-        public static Clause<ConstraintElement> Default(object value) { throw new InvalitContextException(nameof(NotNull)); }
+        public static Clause<ConstraintElement> Default(object value) { throw new InvalitContextException(nameof(Default)); }
 
         /// <summary>
         /// REFERENCES clause.

@@ -174,7 +174,6 @@ FROM tbl_data", 10);
         [TestMethod]
         public void Test_CreateTableIfNotExists()
         {
-            if (!_connection.IsTarget(TargetDB.Postgre, TargetDB.MySQL, TargetDB.SQLite)) return;
             CleanUpCreateDropTestTable();
 
             var sql = Db<DBForCreateTest>.Sql(db =>
@@ -471,29 +470,10 @@ FROM tbl_data", 10);
         [TestMethod]
         public void Test_DropTableIfExists()
         {
-            if (!_connection.IsTarget(TargetDB.Postgre, TargetDB.MySQL, TargetDB.SQLite)) return;
-
             var sql = Db<DBForCreateTest>.Sql(db => DropTableIfExists(db.table1));
             _connection.Execute(sql);
             AssertEx.AreEqual(sql, _connection,
 @"DROP TABLE IF EXISTS table1");
-        }
-
-        [TestMethod]
-        public void Test_CreateAndDropDataBase()
-        {
-            if (!_connection.IsTarget(TargetDB.SqlServer)) return;
-            CleanUpCreateDropTestDB();
-
-            var create = Db<DBForCreateTest>.Sql(db => CreateDataBase("CreateDropTestDB"));
-            _connection.Execute(create);
-            AssertEx.AreEqual(create, _connection,
-@"CREATE DATABASE CreateDropTestDB");
-
-            var drop = Db<DBForCreateTest>.Sql(db => DropDataBase("CreateDropTestDB"));
-            _connection.Execute(drop);
-            AssertEx.AreEqual(drop, _connection,
-@"DROP DATABASE CreateDropTestDB");
         }
 
         void CleanUpCreateDropTestDB()
