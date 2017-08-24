@@ -70,7 +70,7 @@ FROM sub2 sub3");
         [TestMethod]
         public void Test_Recursive_3()
         {
-            var rec = Db<DB>.Sql(db => Recursive(new { val = 0 }));
+            var rec = Db<DB>.Sql(db => new { val = 0 });
 
             var select = Db<DB>.Sql(db =>
                 Select(new object[] { 1 }).
@@ -81,7 +81,7 @@ FROM sub2 sub3");
                 );
 
             var sql = Db<DB>.Sql(db =>
-                With(rec, select).
+                With(Recursive(rec.ExpandArguments().As(select))).
                 Select(rec.Body.val).
                 From(rec)
                 );
@@ -90,14 +90,16 @@ FROM sub2 sub3");
             Assert.IsTrue(0 < datas.Count);
             AssertEx.AreEqual(sql, _connection,
 @"WITH
-	RECURSIVE rec(val) AS
-		(SELECT
-			@p_0
-		UNION ALL
-		SELECT
-			(rec.val) + (@p_1)
-		FROM rec
-		WHERE ((rec.val) + (@p_2)) <= (@p_3))
+	RECURSIVE
+		rec(val)
+		AS
+			(SELECT
+				@p_0
+			UNION ALL
+			SELECT
+				(rec.val) + (@p_1)
+			FROM rec
+			WHERE ((rec.val) + (@p_2)) <= (@p_3))
 SELECT
 	rec.val
 FROM rec", 1, 1, 1, 5);

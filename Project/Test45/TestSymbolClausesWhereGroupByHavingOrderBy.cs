@@ -6,6 +6,7 @@ using LambdicSql.feat.Dapper;
 using static LambdicSql.Npgsql.Symbol;
 using static Test.Helper.DBProviderInfo;
 using Test.Helper;
+using LambdicSql.Npgsql;
 
 namespace Test
 {
