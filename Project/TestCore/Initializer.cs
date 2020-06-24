@@ -19,6 +19,9 @@ namespace Test
                 conn.Open();
                 DropTables(conn);
                 conn.Execute(CreateStaff);
+
+                var x = CreateRemuneration.Build(typeof(Npgsql.NpgsqlConnection)).Text;
+
                 conn.Execute(CreateRemuneration);
                 conn.Execute(CreateData);
                 InsertData(conn);
